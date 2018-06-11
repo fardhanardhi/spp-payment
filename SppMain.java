@@ -4,67 +4,150 @@ import java.util.*;
 
 public class SppMain {
     public static void main(String[] args) {
+        DoubleLinkedList dll = new DoubleLinkedList();
         Scanner sci = new Scanner(System.in);
         Scanner scs = new Scanner(System.in);
-        BinarySearchTree b = new BinarySearchTree();
-        int pilihan, id;
         boolean ulang = true;
-        
-        while (ulang) {
-            System.out.println("\n----------------------------------------------------");
-            System.out.println("\n                   SMPN 1 POLINEMA                  ");
-            System.out.println("\n            LANGKAH - LANGKAH MEMBAYAR SPP          ");
-            System.out.println("\n            **INFORMASI PEMBAYARAN SISWA**          ");
-            System.out.println("\n----------------------------------------------------");
-            System.out.println(" 1. Data Transkip SPP");
-            System.out.println(" 2. Hasil Transaksi");
-            System.out.println(" 3. Keluar");
-            System.out.println("SILAHKAN MASUKKAN SESUAI URUTAN NOMER !");
-            System.out.print("Masukan pilihan: ");
-            
-            System.out.println("DOUBLE LINKEDLIST DENGAN MENU");
-            System.out.println("=============================");
-            System.out.println("[1] Insert ");
-            System.out.println("[2] Delete");
-            System.out.println("[3] Find");
-            System.out.println("[4] Display");
-            System.out.println("[0] Keluar");
-            System.out.println("=============================");
-            System.out.print(">> ");
-            pilihan = sci.nextInt();
-            System.out.println("=============================");
-            System.out.println();
-            switch (pilihan) {
-            case 1:
-                System.out.print("masukan data baru: ");
-                id = sci.nextInt();
-                b.insert(id);
-                break;
-            case 2:
-                System.out.print("hapus data: ");
-                id = sci.nextInt();
-                b.delete(id);
-                break;
-            case 3:
-                System.out.print("cari data: ");
-                id = sci.nextInt();
-                System.out.println(b.find(id));
-                System.out.println(b.findNode(id).data);
-                break;
-            case 4:
-                b.display(b.root);
-                break;
-            case 0:
-                System.out.print("Keluar ");
-                ulang = false;
-                break;
-            default:
-                System.out.print("Input salah, ulangi! ");
-                break;
+        int pilihan, nis, kelas;
+        String nama;
+
+        dll.addLast(111, "adan", 1);
+        dll.addLast(112, "dhani", 1);
+        dll.addLast(113, "adhe", 1);
+        dll.addLast(114, "adi", 1);
+        dll.addLast(115, "budi", 1);
+        dll.addLast(116, "joni", 2);
+        dll.addLast(117, "jaka", 2);
+        dll.addLast(118, "indra", 2);
+        dll.addLast(119, "soni", 2);
+        dll.addLast(120, "joko", 2);
+
+        try {
+            while (ulang) {
+                System.out.println();
+                System.out.println("+---------------------------+");
+                System.out.println("|    - SMPN 1 POLINEMA -    |");
+                System.out.println("|   SISTEM PEMBAYARAN SPP   |");
+                System.out.println("+---------------------------+");
+                System.out.println("| -> [1] Kelola Siswa       |");
+                System.out.println("| -> [2] Pembayaran SPP     |");
+                System.out.println("| -> [3] Hasil Transaksi    |");
+                System.out.println("| -> [0] Keluar             |");
+                System.out.println("+---------------------------+");
+                System.out.print("-> Masukan Pilihan: ");
+                pilihan = sci.nextInt();
+                switch (pilihan) {
+                    case 1:
+                        do {
+                            System.out.println();
+                            System.out.println("+---------------------------+");
+                            System.out.println("|    - SMPN 1 POLINEMA -    |");
+                            System.out.println("|      MANAJEMEN SISWA      |");
+                            System.out.println("+---------------------------+");
+                            System.out.println("| -> [1] Tambah Siswa       |");
+                            System.out.println("| -> [2] Hapus Siswa        |");
+                            System.out.println("| -> [3] Cari Siswa         |");
+                            System.out.println("| -> [4] Tampilkan Siswa    |");
+                            System.out.println("| -> [0] Batal              |");
+                            System.out.println("+---------------------------+");
+                            System.out.print("-> Masukan Pilihan: ");
+                            pilihan = sci.nextInt();
+                            System.out.println();
+                            switch (pilihan) {
+                                case 1:
+                                    System.out.print("Masukan NIS: ");
+                                    nis = sci.nextInt();
+    
+                                    System.out.print("Masukan nama: ");
+                                    nama = scs.nextLine();
+    
+                                    System.out.print("Masukan kelas: ");
+                                    kelas = sci.nextInt();
+    
+                                    dll.addLast(nis, nama, kelas);
+                                    break;
+                                case 2:
+                                    System.out.println("-> [1] Hapus siswa");
+                                    System.out.println("-> [2] Hapus semua siswa");
+                                    System.out.println("-> [0] Batal");
+                                    System.out.println("-----------------------------");
+                                    System.out.print("-> Masukan Pilihan: ");
+                                    pilihan = sci.nextInt();
+                                    System.out.println();
+                                    switch (pilihan) {
+                                        case 1:
+                                            System.out.print("Masukan kelas: ");
+                                            kelas = sci.nextInt();
+                                            System.out.println();
+                                            dll.printByKelas(kelas);
+                                            System.out.println();
+                                            System.out.print("Masukan NIS: ");
+                                            nis = sci.nextInt();
+                                            dll.removeNis(nis);
+                                            break;
+                                        case 2:
+                                            dll.clear();
+                                            break;
+                                        case 0:
+                                            break;
+                                        default:
+                                            System.out.print("Input salah! ");
+                                            break;
+                                    }
+                                    break;
+                                case 3:
+                                    System.out.print("Masukan kelas: ");
+                                    kelas = sci.nextInt();
+                                    System.out.println();
+                                    dll.printByKelas(kelas);
+                                    System.out.println();
+                                    System.out.print("Masukan NIS: ");
+                                    nis = sci.nextInt();
+                                    System.out.println();
+                                    dll.search(nis);
+                                    System.out.println();
+                                    System.out.print("Tekan [ENTER]");
+                                    scs.nextLine();
+
+                                    break;
+                                case 4:
+                                    dll.print();
+                                    System.out.println();
+                                    System.out.print("Tekan [ENTER]");
+                                    scs.nextLine();
+
+                                    break;
+                                case 0:
+                                    break;
+                                default:
+                                    System.out.print("Input salah! ");
+                                    break;
+                            }
+                            
+                        } while (pilihan != 0);
+                        break;
+                    case 2:
+                        System.out.print("hapus data: ");
+                        break;
+                    case 3:
+                        System.out.print("cari data: ");
+                        break;
+                    case 4:
+                        break;
+                    case 0:
+                        System.out.print("Keluar ");
+                        ulang = false;
+                        break;
+                    default:
+                        System.out.print("Input salah, ulangi! ");
+                        break;
+                }
+                System.out.println();
+                System.out.print("Tekan [ENTER]");
+                scs.nextLine();
             }
-            System.out.print("[ENTER]");
-            scs.nextLine();
-            System.out.println();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
     }
