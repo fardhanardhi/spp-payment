@@ -137,7 +137,7 @@ public class OperasiSiswa {
         }
     }
 
-    public NodeSiswa getSiswa(int nis) {
+    public NodeSiswa getSiswa(int nis) throws Exception {
         if (isEmpty())
             throw new Exception("Daftar siswa masih kosong");
         boolean ditemukan = false;
