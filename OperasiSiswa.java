@@ -136,6 +136,26 @@ public class OperasiSiswa {
             System.out.println("- Kelas\t: " + tmp.kelas);
         }
     }
+
+    public NodeSiswa getSiswa(int nis) {
+        if (isEmpty())
+            throw new Exception("Daftar siswa masih kosong");
+        boolean ditemukan = false;
+        NodeSiswa tmp = head;
+        for (int i = 0; i < size; i++) {
+            if (tmp.nis != nis) {
+                tmp = tmp.next;
+            } else {
+                ditemukan = true;
+                break;
+            }
+        }
+        if (!ditemukan)
+            throw new Exception("Nilai tidak ditemukan");
+        else {
+            return tmp;
+        }
+    }
     
     public void removeNis(int nis) throws Exception {
         if (isEmpty())
