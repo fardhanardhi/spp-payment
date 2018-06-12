@@ -87,22 +87,6 @@ public class DoubleLinkedList {
         }
     }
     
-    // public void printByKelas(int kelas) {
-    //     if (!isEmpty()) {
-    //         NodeSiswa tmp = head;
-    //         System.out.println("Data siswa kelas " + kelas);
-    //         System.out.println("----------------");
-    //         while (tmp != null) {
-    //             if (tmp.kelas == kelas) {
-    //                 System.out.println("[" + tmp.nis + "] \t" + tmp.nama + "\t" + tmp.kelas);
-    //                 tmp = tmp.next;
-    //             }
-    //         }
-    //     } 
-    //     else
-    //         System.out.println("Linked list kosong");
-    // }
-
     public void removeFirst() throws Exception {
         if (isEmpty())
             throw new Exception("Linked list masih kosong, tidak dapat dihapus");
@@ -129,32 +113,6 @@ public class DoubleLinkedList {
         current.next = null;
         size--;
     }
-
-    // public void remove(int index) throws Exception {
-    //     if (isEmpty() || index >= size)
-    //         throw new Exception("Nilai indeks diluar batas");
-    //     if (index == 0)
-    //         removeFirst();
-    //     else {
-    //         NodeSiswa current = head;
-    //         int i = 0;
-    //         while (i < index) {
-    //             current = current.next;
-    //             i++;
-    //         }
-    //         if (current.next == null)
-    //             current.prev.next = null;
-    //         else if (current.prev == null) {
-    //             current = current.next;
-    //             current.prev = null;
-    //             head = current;
-    //         } else {
-    //             current.prev.next = current.next;
-    //             current.next.prev = current.prev;
-    //         }
-    //         size--;
-    //     }
-    // }
 
     public void search(int nis) throws Exception {
         if (isEmpty())
@@ -205,30 +163,4 @@ public class DoubleLinkedList {
             size--;
         }
     }
-
-    // public int getFirst() throws Exception {
-    //     if (isEmpty())
-    //         throw new Exception("Linked list kosong");
-    //     return head.data;
-    // }
-
-    // public int getLast() throws Exception {
-    //     if (isEmpty())
-    //         throw new Exception("Linked list kosong");
-    //     NodeSiswa tmp = head;
-    //     while (tmp.next != null) {
-    //         tmp = tmp.next;
-    //     }
-    //     return tmp.data;
-    // }
-
-    // public int get(int index) throws Exception {
-    //     if (isEmpty() || index >= size)
-    //         throw new Exception("nilai indeks diluar batas");
-    //     NodeSiswa tmp = head;
-    //     for (int i = 0; i < index; i++) {
-    //         tmp = tmp.next;
-    //     }
-    //     return tmp.data;
-    // }
 }
