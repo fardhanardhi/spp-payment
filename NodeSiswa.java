@@ -1,11 +1,12 @@
 package sppPayment;
 
-public class Node {
+public class NodeSiswa {
     String nama;
     int kelas, nis;
-    Node prev, next;
+    NodeSiswa prev;
+    NodeSiswa next;
 
-    Node(Node prev, int nis, String nama, int kelas, Node next) {
+    NodeSiswa(NodeSiswa prev, int nis, String nama, int kelas, NodeSiswa next) {
         this.prev = prev;
         this.nis = nis;
         this.nama = nama;

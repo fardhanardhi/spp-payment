@@ -1,7 +1,7 @@
 package sppPayment;
 
 public class DoubleLinkedList {
-    Node head;
+    NodeSiswa head;
     int size;
 
     public DoubleLinkedList() {
@@ -15,9 +15,9 @@ public class DoubleLinkedList {
 
     public void addFirst(int nis, String nama, int kelas) {
         if (isEmpty()) {
-            head = new Node(null, nis, nama, kelas, null);
+            head = new NodeSiswa(null, nis, nama, kelas, null);
         } else {
-            Node newNode = new Node(null, nis, nama, kelas, head);
+            NodeSiswa newNode = new NodeSiswa(null, nis, nama, kelas, head);
             head.prev = newNode;
             head = newNode;
         }
@@ -28,11 +28,11 @@ public class DoubleLinkedList {
         if (isEmpty()) {
             addFirst(nis, nama, kelas);
         } else {
-            Node current = head;
+            NodeSiswa current = head;
             while (current.next != null) {
                 current = current.next;
             }
-            Node newNode = new Node(current, nis, nama, kelas, null);
+            NodeSiswa newNode = new NodeSiswa(current, nis, nama, kelas, null);
             current.next = newNode;
             size++;
         }
@@ -49,7 +49,7 @@ public class DoubleLinkedList {
 
     public void print() {
         if (!isEmpty()) {
-            Node tmp = head;
+            NodeSiswa tmp = head;
             System.out.println("Kelas\tNIS\tNama");
             System.out.println("----------------------");
             while (tmp != null) {
@@ -65,7 +65,7 @@ public class DoubleLinkedList {
         if (isEmpty())
             throw new Exception("Daftar siswa masih kosong");
         boolean ditemukan = false;
-        Node tmp = head;
+        NodeSiswa tmp = head;
         int jumlah = 0;
         System.out.println("Kelas\t NIS\tNama");
         System.out.println("----------------------");
@@ -89,7 +89,7 @@ public class DoubleLinkedList {
     
     // public void printByKelas(int kelas) {
     //     if (!isEmpty()) {
-    //         Node tmp = head;
+    //         NodeSiswa tmp = head;
     //         System.out.println("Data siswa kelas " + kelas);
     //         System.out.println("----------------");
     //         while (tmp != null) {
@@ -122,7 +122,7 @@ public class DoubleLinkedList {
             head = null;
             size--;
         }
-        Node current = head;
+        NodeSiswa current = head;
         while (current.next.next != null) {
             current = current.next;
         }
@@ -136,7 +136,7 @@ public class DoubleLinkedList {
     //     if (index == 0)
     //         removeFirst();
     //     else {
-    //         Node current = head;
+    //         NodeSiswa current = head;
     //         int i = 0;
     //         while (i < index) {
     //             current = current.next;
@@ -160,7 +160,7 @@ public class DoubleLinkedList {
         if (isEmpty())
             throw new Exception("Daftar siswa masih kosong");
         boolean ditemukan = false;
-        Node tmp = head;
+        NodeSiswa tmp = head;
         for (int i = 0; i < size; i++) {
             if (tmp.nis != nis) {
                 tmp = tmp.next;
@@ -185,7 +185,7 @@ public class DoubleLinkedList {
         if (head.nis == nis)
             removeFirst();
         else {
-            Node current = head;
+            NodeSiswa current = head;
             while (current.next != null) {
                 current = current.next;
                 if (current.nis == nis) {
@@ -215,7 +215,7 @@ public class DoubleLinkedList {
     // public int getLast() throws Exception {
     //     if (isEmpty())
     //         throw new Exception("Linked list kosong");
-    //     Node tmp = head;
+    //     NodeSiswa tmp = head;
     //     while (tmp.next != null) {
     //         tmp = tmp.next;
     //     }
@@ -225,7 +225,7 @@ public class DoubleLinkedList {
     // public int get(int index) throws Exception {
     //     if (isEmpty() || index >= size)
     //         throw new Exception("nilai indeks diluar batas");
-    //     Node tmp = head;
+    //     NodeSiswa tmp = head;
     //     for (int i = 0; i < index; i++) {
     //         tmp = tmp.next;
     //     }

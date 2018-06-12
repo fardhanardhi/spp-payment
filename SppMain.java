@@ -11,16 +11,21 @@ public class SppMain {
         int pilihan, nis, kelas;
         String nama;
 
-        dll.addLast(111, "adan", 1);
-        dll.addLast(112, "dhani", 1);
-        dll.addLast(113, "adhe", 1);
-        dll.addLast(114, "adi", 1);
-        dll.addLast(115, "budi", 1);
-        dll.addLast(116, "joni", 2);
-        dll.addLast(117, "jaka", 2);
-        dll.addLast(118, "indra", 2);
-        dll.addLast(119, "soni", 2);
-        dll.addLast(120, "joko", 2);
+        dll.addLast(111, "Rika Belinda Safitri", 1);
+        dll.addLast(112, "Gilda Anita Lailasari", 1);
+        dll.addLast(113, "Rahmi Hastuti", 1);
+        dll.addLast(114, "Dagel Oman Halim", 1);
+        dll.addLast(115, "Mahdi Sirait", 1);
+        dll.addLast(116, "Prakosa Kusumo", 2);
+        dll.addLast(117, "Cakrawala Narpati", 2);
+        dll.addLast(118, "Zamira Suartini", 2);
+        dll.addLast(119, "Mahfud Mahendra", 2);
+        dll.addLast(120, "Jarwa Abyasa Rajasa", 2);
+        dll.addLast(121, "Warsita Tarihoran", 3);
+        dll.addLast(122, "Pardi Harjo Waluyo", 3);
+        dll.addLast(123, "Caket Rahmat Prabowo", 3);
+        dll.addLast(124, "Ida Hastuti", 3);
+        dll.addLast(125, "Vanesa Siska Yulianti", 3);
 
         try {
             while (ulang) {
