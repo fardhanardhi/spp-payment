@@ -13,7 +13,7 @@ public class OperasiSiswa {
         return head == null;
     }
 
-    public void addFirst(int nis, String nama, int kelas) {
+    public void addFirst(int nis, String nama, String kelas) {
         if (isEmpty()) {
             head = new NodeSiswa(null, nis, nama, kelas, null);
         } else {
@@ -24,7 +24,7 @@ public class OperasiSiswa {
         size++;
     }
 
-    public void addLast(int nis, String nama, int kelas) {
+    public void addLast(int nis, String nama, String kelas) {
         if (isEmpty()) {
             addFirst(nis, nama, kelas);
         } else {
@@ -61,7 +61,7 @@ public class OperasiSiswa {
             System.out.println("Linked list kosong");
     }
 
-    public void printByKelas(int kelas) throws Exception {
+    public void printByKelas(String kelas) throws Exception {
         if (isEmpty())
             throw new Exception("Daftar siswa masih kosong");
         boolean ditemukan = false;
@@ -70,7 +70,7 @@ public class OperasiSiswa {
         System.out.println("Kelas\t NIS\tNama");
         System.out.println("----------------------");
         for (int i = 0; i < size; i++) {
-            if (tmp.kelas == kelas) {
+            if (tmp.kelas.equals(kelas)) {
                 ditemukan = true;
                 System.out.println(tmp.kelas + "\t[" + tmp.nis + "]\t" + tmp.nama);
                 jumlah++;

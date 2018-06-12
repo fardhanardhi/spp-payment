@@ -8,24 +8,24 @@ public class SppMain {
         Scanner sci = new Scanner(System.in);
         Scanner scs = new Scanner(System.in);
         boolean ulang = true;
-        int pilihan, nis, kelas;
-        String nama;
+        int pilihan, nis;
+        String nama, kelas;
 
-        os.addLast(111, "Rika Belinda Safitri", 1);
-        os.addLast(112, "Gilda Anita Lailasari", 1);
-        os.addLast(113, "Rahmi Hastuti", 1);
-        os.addLast(114, "Dagel Oman Halim", 1);
-        os.addLast(115, "Mahdi Sirait", 1);
-        os.addLast(116, "Prakosa Kusumo", 2);
-        os.addLast(117, "Cakrawala Narpati", 2);
-        os.addLast(118, "Zamira Suartini", 2);
-        os.addLast(119, "Mahfud Mahendra", 2);
-        os.addLast(120, "Jarwa Abyasa Rajasa", 2);
-        os.addLast(121, "Warsita Tarihoran", 3);
-        os.addLast(122, "Pardi Harjo Waluyo", 3);
-        os.addLast(123, "Caket Rahmat Prabowo", 3);
-        os.addLast(124, "Ida Hastuti", 3);
-        os.addLast(125, "Vanesa Siska Yulianti", 3);
+        os.addLast(111, "Rika Belinda Safitri", "VII");
+        os.addLast(112, "Gilda Anita Lailasari", "VII");
+        os.addLast(113, "Rahmi Hastuti", "VII");
+        os.addLast(114, "Dagel Oman Halim", "VII");
+        os.addLast(115, "Mahdi Sirait", "VII");
+        os.addLast(116, "Prakosa Kusumo", "VIII");
+        os.addLast(117, "Cakrawala Narpati", "VIII");
+        os.addLast(118, "Zamira Suartini", "VIII");
+        os.addLast(119, "Mahfud Mahendra", "VIII");
+        os.addLast(120, "Jarwa Abyasa Rajasa", "VIII");
+        os.addLast(121, "Warsita Tarihoran", "IX");
+        os.addLast(122, "Pardi Harjo Waluyo", "IX");
+        os.addLast(123, "Caket Rahmat Prabowo", "IX");
+        os.addLast(124, "Ida Hastuti", "IX");
+        os.addLast(125, "Vanesa Siska Yulianti", "IX");
 
         try {
             while (ulang) {
@@ -67,7 +67,7 @@ public class SppMain {
                                     nama = scs.nextLine();
     
                                     System.out.print("Masukan kelas: ");
-                                    kelas = sci.nextInt();
+                                    kelas = scs.nextLine();
     
                                     os.addLast(nis, nama, kelas);
                                     break;
@@ -82,7 +82,7 @@ public class SppMain {
                                     switch (pilihan) {
                                         case 1:
                                             System.out.print("Masukan kelas: ");
-                                            kelas = sci.nextInt();
+                                            kelas = scs.nextLine();
                                             System.out.println();
                                             os.printByKelas(kelas);
                                             System.out.println();
@@ -102,7 +102,7 @@ public class SppMain {
                                     break;
                                 case 3:
                                     System.out.print("Masukan kelas: ");
-                                    kelas = sci.nextInt();
+                                    kelas = scs.nextLine();
                                     System.out.println();
                                     os.printByKelas(kelas);
                                     System.out.println();
