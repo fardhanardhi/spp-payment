@@ -1,10 +1,10 @@
 package sppPayment;
 
-public class DoubleLinkedList {
+public class OperasiSiswa {
     NodeSiswa head;
     int size;
 
-    public DoubleLinkedList() {
+    public OperasiSiswa() {
         head = null;
         size = 0;
     }

@@ -4,28 +4,28 @@ import java.util.*;
 
 public class SppMain {
     public static void main(String[] args) {
-        DoubleLinkedList dll = new DoubleLinkedList();
+        OperasiSiswa os = new OperasiSiswa();
         Scanner sci = new Scanner(System.in);
         Scanner scs = new Scanner(System.in);
         boolean ulang = true;
         int pilihan, nis, kelas;
         String nama;
 
-        dll.addLast(111, "Rika Belinda Safitri", 1);
-        dll.addLast(112, "Gilda Anita Lailasari", 1);
-        dll.addLast(113, "Rahmi Hastuti", 1);
-        dll.addLast(114, "Dagel Oman Halim", 1);
-        dll.addLast(115, "Mahdi Sirait", 1);
-        dll.addLast(116, "Prakosa Kusumo", 2);
-        dll.addLast(117, "Cakrawala Narpati", 2);
-        dll.addLast(118, "Zamira Suartini", 2);
-        dll.addLast(119, "Mahfud Mahendra", 2);
-        dll.addLast(120, "Jarwa Abyasa Rajasa", 2);
-        dll.addLast(121, "Warsita Tarihoran", 3);
-        dll.addLast(122, "Pardi Harjo Waluyo", 3);
-        dll.addLast(123, "Caket Rahmat Prabowo", 3);
-        dll.addLast(124, "Ida Hastuti", 3);
-        dll.addLast(125, "Vanesa Siska Yulianti", 3);
+        os.addLast(111, "Rika Belinda Safitri", 1);
+        os.addLast(112, "Gilda Anita Lailasari", 1);
+        os.addLast(113, "Rahmi Hastuti", 1);
+        os.addLast(114, "Dagel Oman Halim", 1);
+        os.addLast(115, "Mahdi Sirait", 1);
+        os.addLast(116, "Prakosa Kusumo", 2);
+        os.addLast(117, "Cakrawala Narpati", 2);
+        os.addLast(118, "Zamira Suartini", 2);
+        os.addLast(119, "Mahfud Mahendra", 2);
+        os.addLast(120, "Jarwa Abyasa Rajasa", 2);
+        os.addLast(121, "Warsita Tarihoran", 3);
+        os.addLast(122, "Pardi Harjo Waluyo", 3);
+        os.addLast(123, "Caket Rahmat Prabowo", 3);
+        os.addLast(124, "Ida Hastuti", 3);
+        os.addLast(125, "Vanesa Siska Yulianti", 3);
 
         try {
             while (ulang) {
@@ -69,7 +69,7 @@ public class SppMain {
                                     System.out.print("Masukan kelas: ");
                                     kelas = sci.nextInt();
     
-                                    dll.addLast(nis, nama, kelas);
+                                    os.addLast(nis, nama, kelas);
                                     break;
                                 case 2:
                                     System.out.println("-> [1] Hapus siswa");
@@ -84,14 +84,14 @@ public class SppMain {
                                             System.out.print("Masukan kelas: ");
                                             kelas = sci.nextInt();
                                             System.out.println();
-                                            dll.printByKelas(kelas);
+                                            os.printByKelas(kelas);
                                             System.out.println();
                                             System.out.print("Masukan NIS: ");
                                             nis = sci.nextInt();
-                                            dll.removeNis(nis);
+                                            os.removeNis(nis);
                                             break;
                                         case 2:
-                                            dll.clear();
+                                            os.clear();
                                             break;
                                         case 0:
                                             break;
@@ -104,19 +104,19 @@ public class SppMain {
                                     System.out.print("Masukan kelas: ");
                                     kelas = sci.nextInt();
                                     System.out.println();
-                                    dll.printByKelas(kelas);
+                                    os.printByKelas(kelas);
                                     System.out.println();
                                     System.out.print("Masukan NIS: ");
                                     nis = sci.nextInt();
                                     System.out.println();
-                                    dll.search(nis);
+                                    os.search(nis);
                                     System.out.println();
                                     System.out.print("Tekan [ENTER]");
                                     scs.nextLine();
 
                                     break;
                                 case 4:
-                                    dll.print();
+                                    os.print();
                                     System.out.println();
                                     System.out.print("Tekan [ENTER]");
                                     scs.nextLine();
