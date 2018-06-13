@@ -5,11 +5,13 @@ import java.util.*;
 public class SppMain {
     public static void main(String[] args) {
         OperasiSiswa os = new OperasiSiswa();
+        OperasiTransaksi ot = new OperasiTransaksi();
         Scanner sci = new Scanner(System.in);
         Scanner scs = new Scanner(System.in);
         boolean ulang = true;
-        int pilihan, nis;
+        int pilihan, nis, jumlahBulan, jumlahBayar;
         String nama, kelas;
+        NodeSiswa siswa;
 
         os.addLast(111, "Rika Belinda Safitri", "VII");
         os.addLast(112, "Gilda Anita Lailasari", "VII");
@@ -27,6 +29,17 @@ public class SppMain {
         os.addLast(124, "Ida Hastuti", "IX");
         os.addLast(125, "Vanesa Siska Yulianti", "IX");
 
+        ot.addLast(os.head, 150000, 1);
+        ot.addLast(os.head.next, 500000, 2);
+        ot.addLast(os.head.next.next, 150000, 1);
+        ot.addLast(os.head.next.next.next.next, 150000, 1);
+        ot.addLast(os.head.next.next.next, 150000, 1);
+        ot.addLast(os.head.next, 750000, 2);
+        ot.addLast(os.head.next.next.next.next.next.next.next, 150000, 1);
+        ot.addLast(os.head.next.next.next.next, 550000, 3);
+        ot.addLast(os.head.next, 150000, 1);
+        ot.addLast(os.head.next.next.next.next, 150000, 1);
+
         try {
             while (ulang) {
                 System.out.println();
@@ -34,15 +47,35 @@ public class SppMain {
                 System.out.println("|    - SMPN 1 POLINEMA -    |");
                 System.out.println("|   SISTEM PEMBAYARAN SPP   |");
                 System.out.println("+---------------------------+");
-                System.out.println("| -> [1] Kelola Siswa       |");
-                System.out.println("| -> [2] Pembayaran SPP     |");
-                System.out.println("| -> [3] Hasil Transaksi    |");
+                System.out.println("| -> [1] Pembayaran SPP     |");
+                System.out.println("| -> [2] Kelola Siswa       |");
+                System.out.println("| -> [3] Kelola Transaksi   |");
                 System.out.println("| -> [0] Keluar             |");
                 System.out.println("+---------------------------+");
                 System.out.print("-> Masukan Pilihan: ");
                 pilihan = sci.nextInt();
                 switch (pilihan) {
                     case 1:
+                        System.out.println();
+                        do {
+                            System.out.print("Masukan Kelas Siswa: ");
+                            kelas = scs.nextLine();
+                        } while (!os.isKelas(kelas));
+                        System.out.println();
+                        os.printByKelas(kelas);
+                        System.out.println();
+                        do {
+                            System.out.print("Pilih NIS\t: ");
+                            nis = sci.nextInt();
+                        } while (!os.isNis(nis));
+                        siswa = os.getSiswa(nis);
+                        System.out.print("Jumlah bulan\t: ");
+                        jumlahBulan = sci.nextInt();
+                        System.out.print("Jumlah uang (Rp): ");
+                        jumlahBayar = sci.nextInt();
+                        ot.addLast(siswa, jumlahBayar, jumlahBulan);
+                        break;
+                    case 2:
                         do {
                             System.out.println();
                             System.out.println("+---------------------------+");
@@ -62,13 +95,15 @@ public class SppMain {
                                 case 1:
                                     System.out.print("Masukan NIS: ");
                                     nis = sci.nextInt();
-    
+
                                     System.out.print("Masukan nama: ");
                                     nama = scs.nextLine();
-    
-                                    System.out.print("Masukan kelas: ");
-                                    kelas = scs.nextLine();
-    
+
+                                    do {
+                                        System.out.print("Masukan kelas: ");
+                                        kelas = scs.nextLine();
+                                    } while (!os.isKelas(kelas));
+
                                     os.addLast(nis, nama, kelas);
                                     break;
                                 case 2:
@@ -80,34 +115,42 @@ public class SppMain {
                                     pilihan = sci.nextInt();
                                     System.out.println();
                                     switch (pilihan) {
-                                        case 1:
+                                    case 1:
+                                        do {
                                             System.out.print("Masukan kelas: ");
                                             kelas = scs.nextLine();
-                                            System.out.println();
-                                            os.printByKelas(kelas);
-                                            System.out.println();
+                                        } while (!os.isKelas(kelas));
+                                        System.out.println();
+                                        os.printByKelas(kelas);
+                                        System.out.println();
+                                        do {
                                             System.out.print("Masukan NIS: ");
                                             nis = sci.nextInt();
-                                            os.removeNis(nis);
-                                            break;
-                                        case 2:
-                                            os.clear();
-                                            break;
-                                        case 0:
-                                            break;
-                                        default:
-                                            System.out.print("Input salah! ");
-                                            break;
+                                        } while (!os.isNis(nis));
+                                        os.removeNis(nis);
+                                        break;
+                                    case 2:
+                                        os.clear();
+                                        break;
+                                    case 0:
+                                        break;
+                                    default:
+                                        System.out.print("Input salah! ");
+                                        break;
                                     }
                                     break;
                                 case 3:
-                                    System.out.print("Masukan kelas: ");
-                                    kelas = scs.nextLine();
+                                    do {
+                                        System.out.print("Masukan kelas: ");
+                                        kelas = scs.nextLine();
+                                    } while (!os.isKelas(kelas));
                                     System.out.println();
                                     os.printByKelas(kelas);
                                     System.out.println();
-                                    System.out.print("Masukan NIS: ");
-                                    nis = sci.nextInt();
+                                    do {
+                                        System.out.print("Masukan NIS: ");
+                                        nis = sci.nextInt();
+                                    } while (!os.isNis(nis));
                                     System.out.println();
                                     os.search(nis);
                                     System.out.println();
@@ -125,17 +168,93 @@ public class SppMain {
                                 case 0:
                                     break;
                                 default:
+                                System.out.print("Input salah! ");
+                                break;
+                            }
+
+                        } while (pilihan != 0);
+                        break;
+                    case 3:
+                        do {
+                            System.out.println();
+                            System.out.println("+----------------------------+");
+                            System.out.println("|    - SMPN 1 POLINEMA -     |");
+                            System.out.println("|    MANAJEMEN TRANSAKSI     |");
+                            System.out.println("+----------------------------+");
+                            System.out.println("| -> [1] Hapus Transaksi     |");
+                            System.out.println("| -> [2] Cari Transaksi      |");
+                            System.out.println("| -> [3] Tampilkan Transaksi |");
+                            System.out.println("| -> [0] Batal               |");
+                            System.out.println("+----------------------------+");
+                            System.out.print("-> Masukan Pilihan: ");
+                            pilihan = sci.nextInt();
+                            System.out.println();
+                            switch (pilihan) {
+                                case 1:
+                                    System.out.println("-> [1] Hapus Transaksi");
+                                    System.out.println("-> [2] Hapus semua Transaksi");
+                                    System.out.println("-> [0] Batal");
+                                    System.out.println("-----------------------------");
+                                    System.out.print("-> Masukan Pilihan: ");
+                                    pilihan = sci.nextInt();
+                                    System.out.println();
+                                    switch (pilihan) {
+                                    case 1:
+                                        do {
+                                            System.out.print("Masukan kelas: ");
+                                            kelas = scs.nextLine();
+                                        } while (!os.isKelas(kelas));
+                                        System.out.println();
+                                        ot.printByKelas(kelas);
+                                        System.out.println();
+                                        do {
+                                            System.out.print("Masukan NIS: ");
+                                            nis = sci.nextInt();
+                                        } while (!os.isNis(nis));
+                                        ot.removeNis(nis);
+                                        System.out.println();
+                                        System.out.print("Transaksi berhasil dihapus [ENTER]");
+                                        scs.nextLine();
+
+                                        break;
+                                    case 2:
+                                        ot.clear();
+                                        System.out.println();
+                                        System.out.print("Semua transaksi berhasil dihapus [ENTER]");
+                                        scs.nextLine();
+                                        break;
+                                    case 0:
+                                        break;
+                                    default:
+                                        System.out.print("Input salah! ");
+                                        break;
+                                    }
+                                    break;
+                                case 2:
+                                    do {
+                                        System.out.print("Masukan kelas: ");
+                                        kelas = scs.nextLine();
+                                    } while (!os.isKelas(kelas));
+                                    System.out.println();
+                                    ot.printByKelas(kelas);
+                                    System.out.println();
+
+                                    System.out.print("Tekan [ENTER]");
+                                    scs.nextLine();
+                                    break;
+                                case 3:
+                                    ot.print();
+                                    System.out.println();
+                                    System.out.print("Tekan [ENTER]");
+                                    scs.nextLine();
+                                    break;
+                                case 0:
+                                    break;
+                                default:
                                     System.out.print("Input salah! ");
                                     break;
                             }
-                            
                         } while (pilihan != 0);
-                        break;
-                    case 2:
-                        System.out.print("hapus data: ");
-                        break;
-                    case 3:
-                        System.out.print("cari data: ");
                         break;
                     case 4:
                         break;

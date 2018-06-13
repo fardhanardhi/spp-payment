@@ -3,6 +3,7 @@ package sppPayment;
 public class OperasiTransaksi {
     NodeTransaksi head;
     int size;
+    int perbulan = 150000;
 
     public OperasiTransaksi() {
         head = null;
@@ -16,7 +17,8 @@ public class OperasiTransaksi {
     public void addFirst(NodeSiswa siswa, int jumlahBayar, int jumlahBulan) {
         if (isEmpty()) {
             head = new NodeTransaksi(null, siswa, jumlahBayar, jumlahBulan, null);
-        } else {
+        } 
+        else {
             NodeTransaksi newNode = new NodeTransaksi(null, siswa, jumlahBayar, jumlahBulan, head);
             head.prev = newNode;
             head = newNode;
@@ -24,20 +26,33 @@ public class OperasiTransaksi {
         size++;
     }
 
+    
     public void addLast(NodeSiswa siswa, int jumlahBayar, int jumlahBulan) {
-        if (isEmpty()) {
-            addFirst(siswa, jumlahBayar, jumlahBulan);
-        } else {
-            NodeTransaksi current = head;
-            while (current.next != null) {
-                current = current.next;
+        if (perbulan * jumlahBulan > jumlahBayar) {
+            System.out.println("Uang yang dibayarkan tidak mencukupi untuk membayar SPP");
+        }
+        else {
+            if (isEmpty()) {
+                addFirst(siswa, jumlahBayar, jumlahBulan);
+            } 
+            else {
+                NodeTransaksi current = head;
+                while (current.next != null) {
+                    current = current.next;
+                }
+                NodeTransaksi newNode = new NodeTransaksi(current, siswa, jumlahBayar, jumlahBulan, null);
+                current.next = newNode;
+                size++;
             }
-            NodeTransaksi newNode = new NodeTransaksi(current, siswa, jumlahBayar, jumlahBulan, null);
-            current.next = newNode;
-            size++;
+            System.out.println("Kembalian\t: Rp." + hitungKembalian(jumlahBayar, jumlahBulan));
         }
     }
 
+    public int hitungKembalian(int jumlahBayar, int jumlahBulan) {
+        int kembalian = jumlahBayar - (perbulan * jumlahBulan);
+        return kembalian;
+    }
+    
     public int size() {
         return size;
     }
@@ -48,17 +63,21 @@ public class OperasiTransaksi {
     }
 
     public void print() {
+        int jumlah = 0;
         if (!isEmpty()) {
             NodeTransaksi tmp = head;
             while (tmp != null) {
-                System.out.println("NIS\t: " + tmp.siswa.nis);
-                System.out.println("Nama\t: " + tmp.siswa.nama);
-                System.out.println("Kelas\t: " + tmp.siswa.kelas);
+                System.out.println("NIS\t\t: " + tmp.siswa.nis);
+                System.out.println("Nama\t\t: " + tmp.siswa.nama);
+                System.out.println("Kelas\t\t: " + tmp.siswa.kelas);
                 System.out.println("Jumlah Bayar\t: " + tmp.jumlahBayar);
                 System.out.println("Jumlah Bulan\t: " + tmp.jumlahBulan);
+                System.out.println("Kembalian\t: Rp." + hitungKembalian(tmp.jumlahBayar, tmp.jumlahBulan));
                 System.out.println("-----------------------------");
                 tmp = tmp.next;
+                jumlah++;
             }
+            System.out.println("Total: " + jumlah + " transaksi");
         } else
             System.out.println("Linked list kosong");
     }
@@ -70,23 +89,22 @@ public class OperasiTransaksi {
         NodeTransaksi tmp = head;
         int jumlah = 0;
         for (int i = 0; i < size; i++) {
-            if (tmp.siswa.kelas.equals(kelas)) {
+            if (tmp.siswa.kelas.equalsIgnoreCase(kelas)) {
                 ditemukan = true;
-                System.out.println("NIS\t: " + tmp.siswa.nis);
-                System.out.println("Nama\t: " + tmp.siswa.nama);
-                System.out.println("Kelas\t: " + tmp.siswa.kelas);
+                System.out.println("NIS\t\t: " + tmp.siswa.nis);
+                System.out.println("Nama\t\t: " + tmp.siswa.nama);
+                System.out.println("Kelas\t\t: " + tmp.siswa.kelas);
                 System.out.println("Jumlah Bayar\t: " + tmp.jumlahBayar);
                 System.out.println("Jumlah Bulan\t: " + tmp.jumlahBulan);
+                System.out.println("Kembalian\t: Rp." + hitungKembalian(tmp.jumlahBayar, tmp.jumlahBulan));
                 System.out.println("-----------------------------");
                 jumlah++;
             }
             tmp = tmp.next;
         }
         if (!ditemukan) {
-            System.out.println("----------------------");
-            throw new Exception("Transaksi tidak ditemukan");
+            System.out.println("Transaksi tidak ditemukan");
         } else {
-            System.out.println("----------------------");
             System.out.println("-> " + jumlah + " Transaksi ditemukan");
         }
     }
@@ -110,12 +128,14 @@ public class OperasiTransaksi {
             head = null;
             size--;
         }
-        NodeTransaksi current = head;
-        while (current.next.next != null) {
-            current = current.next;
+        else {
+            NodeTransaksi current = head;
+            while (current.next.next != null) {
+                current = current.next;
+            }
+            current.next = null;
+            size--;
         }
-        current.next = null;
-        size--;
     }
 
     /* public void search(int nis) throws Exception {
@@ -161,16 +181,16 @@ public class OperasiTransaksi {
         }
     } */
 
-    /* public void removeNis(int nis) throws Exception {
+    public void removeNis(int nis) throws Exception {
         if (isEmpty())
             throw new Exception("Linked list kosong");
-        if (head.nis == nis)
+        if (head.siswa.nis == nis)
             removeFirst();
         else {
             NodeTransaksi current = head;
             while (current.next != null) {
                 current = current.next;
-                if (current.nis == nis) {
+                if (current.siswa.nis == nis) {
                     break;
                 }
             }
@@ -186,5 +206,5 @@ public class OperasiTransaksi {
             }
             size--;
         }
-    } */
+    }
 }

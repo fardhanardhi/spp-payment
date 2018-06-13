@@ -70,7 +70,7 @@ public class OperasiSiswa {
         System.out.println("Kelas\t NIS\tNama");
         System.out.println("----------------------");
         for (int i = 0; i < size; i++) {
-            if (tmp.kelas.equals(kelas)) {
+            if (tmp.kelas.equalsIgnoreCase(kelas)) {
                 ditemukan = true;
                 System.out.println(tmp.kelas + "\t[" + tmp.nis + "]\t" + tmp.nama);
                 jumlah++;
@@ -106,12 +106,14 @@ public class OperasiSiswa {
             head = null;
             size--;
         }
-        NodeSiswa current = head;
-        while (current.next.next != null) {
-            current = current.next;
+        else {
+            NodeSiswa current = head;
+            while (current.next.next != null) {
+                current = current.next;
+            }
+            current.next = null;
+            size--;
         }
-        current.next = null;
-        size--;
     }
 
     public void search(int nis) throws Exception {
@@ -182,5 +184,23 @@ public class OperasiSiswa {
             }
             size--;
         }
+    }
+
+    public boolean isKelas(String kelas) {
+        return kelas.equalsIgnoreCase("VII") || kelas.equalsIgnoreCase("VIII") || kelas.equalsIgnoreCase("IX");
+    }
+
+    public boolean isNis(int nis) {
+        boolean ditemukan = false;
+        NodeSiswa tmp = head;
+        for (int i = 0; i < size; i++) {
+            if (tmp.nis != nis) {
+                tmp = tmp.next;
+            } else {
+                ditemukan = true;
+                break;
+            }
+        }
+        return ditemukan;
     }
 }
