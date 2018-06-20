@@ -137,50 +137,7 @@ public class OperasiTransaksi {
             size--;
         }
     }
-
-    /* public void search(int nis) throws Exception {
-        if (isEmpty())
-            throw new Exception("Daftar siswa masih kosong");
-        boolean ditemukan = false;
-        NodeTransaksi tmp = head;
-        for (int i = 0; i < size; i++) {
-            if (tmp.nis != nis) {
-                tmp = tmp.next;
-            } else {
-                ditemukan = true;
-                break;
-            }
-        }
-        if (!ditemukan)
-            throw new Exception("Nilai tidak ditemukan");
-        else {
-            System.out.println("Data ditemukan");
-            System.out.println("- NIS\t: " + tmp.nis);
-            System.out.println("- Nama\t: " + tmp.nama);
-            System.out.println("- Kelas\t: " + tmp.kelas);
-        }
-    } */
-
-    /* public NodeTransaksi getSiswa(int nis) {
-        if (isEmpty())
-            throw new Exception("Daftar siswa masih kosong");
-        boolean ditemukan = false;
-        NodeTransaksi tmp = head;
-        for (int i = 0; i < size; i++) {
-            if (tmp.nis != nis) {
-                tmp = tmp.next;
-            } else {
-                ditemukan = true;
-                break;
-            }
-        }
-        if (!ditemukan)
-            throw new Exception("Nilai tidak ditemukan");
-        else {
-            return tmp;
-        }
-    } */
-
+    
     public void removeNis(int nis) throws Exception {
         if (isEmpty())
             throw new Exception("Linked list kosong");
