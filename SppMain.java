@@ -115,28 +115,28 @@ public class SppMain {
                                     pilihan = sci.nextInt();
                                     System.out.println();
                                     switch (pilihan) {
-                                    case 1:
-                                        do {
-                                            System.out.print("Masukan kelas: ");
-                                            kelas = scs.nextLine();
-                                        } while (!os.isKelas(kelas));
-                                        System.out.println();
-                                        os.printByKelas(kelas);
-                                        System.out.println();
-                                        do {
-                                            System.out.print("Masukan NIS: ");
-                                            nis = sci.nextInt();
-                                        } while (!os.isNis(nis));
-                                        os.removeNis(nis);
-                                        break;
-                                    case 2:
-                                        os.clear();
-                                        break;
-                                    case 0:
-                                        break;
-                                    default:
-                                        System.out.print("Input salah! ");
-                                        break;
+                                        case 1:
+                                            do {
+                                                System.out.print("Masukan kelas: ");
+                                                kelas = scs.nextLine();
+                                            } while (!os.isKelas(kelas));
+                                            System.out.println();
+                                            os.printByKelas(kelas);
+                                            System.out.println();
+                                            do {
+                                                System.out.print("Masukan NIS: ");
+                                                nis = sci.nextInt();
+                                            } while (!os.isNis(nis));
+                                            os.removeNis(nis);
+                                            break;
+                                        case 2:
+                                            os.clear();
+                                            break;
+                                        case 0:
+                                            break;
+                                        default:
+                                            System.out.print("Input salah! ");
+                                            break;
                                     }
                                     break;
                                 case 3:
